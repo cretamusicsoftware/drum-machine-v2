@@ -1,0 +1,216 @@
+:root {
+  --bg-dark: #09090b;
+  --panel-bg: #121214;
+  --track-bg: #1c1c1f;
+  --accent: #10b981; /* Emerald */
+  --accent-glow: rgba(16, 185, 129, 0.3);
+  --border-color: #27272a;
+  --text-main: #e4e4e7;
+  --text-dim: #71717a;
+  --danger: #ef4444;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: "JetBrains Mono", "Inter", monospace;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Main Container */
+.studio-rack {
+  display: flex;
+  width: 1000px;
+  height: 600px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+/* Sidebar / Master Section */
+.sidebar {
+  width: 240px;
+  padding: 30px;
+  background: #0c0c0e;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-main);
+}
+.brand span {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+#play-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--accent);
+  color: #052e16;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px 0 var(--accent-glow);
+}
+
+#play-btn.playing {
+  background: var(--danger);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.4);
+}
+
+.param-box label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.param-box input {
+  background: #000;
+  border: 1px solid var(--border-color);
+  color: var(--accent);
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  text-align: center;
+  outline: none;
+}
+
+/* Grid Engine */
+.grid-engine {
+  flex-grow: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    #1a1a1a 1px,
+    transparent 0
+  );
+  background-size: 40px 40px; /* Subtle studio grid background */
+}
+
+/* Step Lights Ruler */
+.step-ruler {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 8px;
+  margin-left: 140px;
+  margin-bottom: 20px;
+}
+
+.ruler-dot {
+  height: 6px;
+  background: #27272a;
+  border-radius: 3px;
+  transition: background 0.1s ease;
+}
+
+.ruler-dot.active {
+  background: var(--text-main);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Track Rows */
+#instrument-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: var(--track-bg);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border 0.2s ease;
+}
+
+.track:hover {
+  border-color: #3f3f46;
+}
+
+.track-info {
+  width: 120px;
+}
+.track-info span {
+  font-size: 12px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+  color: #a1a1aa;
+}
+
+/* File Input Custom Styling */
+.sample-loader {
+  font-size: 10px;
+  width: 100%;
+  color: var(--text-dim);
+}
+
+/* Pads Styling */
+.pads {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.pad {
+  aspect-ratio: 3 / 4;
+  background: #09090b;
+  border-radius: 4px;
+  cursor: pointer;
+  border-bottom: 3px solid #000;
+  transition: all 0.05s ease;
+}
+
+.pad.on {
+  background: var(--accent);
+  border-bottom-color: #064e3b;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Visual Playhead Feedback on Pad */
+.pad.playing {
+  filter: brightness(1.5);
+  transform: translateY(-2px);
+  border-bottom-width: 5px;
+}
+
+/* Grouping 4x4 for better visibility (like a real sequencer) */
+.pad:nth-child(4n) {
+  margin-right: 5px;
+}
+
+/* Custom Scrollbar for Sample List */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}

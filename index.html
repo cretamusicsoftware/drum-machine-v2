@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SAMPLER-PRO | Virtual Drum Machine</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="studio-rack">
+      <aside class="sidebar">
+        <div class="brand">SAMPLER<span>PRO</span></div>
+        <div class="master-controls">
+          <button id="play-btn">START ENGINE</button>
+          <div class="param-box">
+            <label>TEMPO (BPM)</label>
+            <input
+              type="number"
+              id="bpm-input"
+              value="120"
+              min="40"
+              max="220"
+            />
+          </div>
+        </div>
+      </aside>
+
+      <main class="grid-engine">
+        <div class="step-ruler" id="ruler"></div>
+        <div id="instrument-rows">
+          <div class="track" data-inst="kick">
+            <div class="track-info">
+              <span>KICK</span>
+              <input type="file" class="sample-loader" accept="audio/*" />
+            </div>
+            <div class="pads"></div>
+          </div>
+          <div class="track" data-inst="snare">
+            <div class="track-info">
+              <span>SNARE</span>
+              <input type="file" class="sample-loader" accept="audio/*" />
+            </div>
+            <div class="pads"></div>
+          </div>
+          <div class="track" data-inst="hihat">
+            <div class="track-info">
+              <span>HI-HAT</span>
+              <input type="file" class="sample-loader" accept="audio/*" />
+            </div>
+            <div class="pads"></div>
+          </div>
+          <div class="track" data-inst="perc">
+            <div class="track-info">
+              <span>PERC</span>
+              <input type="file" class="sample-loader" accept="audio/*" />
+            </div>
+            <div class="pads"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
